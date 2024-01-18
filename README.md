@@ -2,7 +2,7 @@
 
 This repository contains code and information for submitting and grading assignments in the Phy 115L Lab Class at U.C. Davis in Winter 2024. 
 
-## Instutions for Submitting Assignments
+## Guide for Submitting Assignments
 
 This quarter, we will be using GitHub to submit assignments. GitHub is a collaborative coding platform that is used throughout academia and industry alike. It based on `git`, which is a tool for tracking changes made to your code and allowing you to go back to old versions if needed.
 
