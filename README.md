@@ -10,7 +10,7 @@ This guide assumes you already understand the of git and GitHub. It will not dis
 
 If you have any questions. Please feel free to reach out to me on Canvas or come to my office hours.
 
-These instructions will be the same for all the assignment in this course.
+These instructions will be the same for all the assignments in this course.
 
 **1. Create a Private Repository**
 
@@ -51,4 +51,4 @@ GitHub does send me an email when you add me as a collaborator, but emails are h
 
 Find the assignment on Canvas, and submit the url to the assignment.
 
-Last Update: Jan 18, 12:50 PM
+Last Update: Jan 18
