@@ -54,15 +54,19 @@ def print_polynomial(coefficients: list[Fraction], n: int):
                 polynomial += " - "
         if i == n:
             polynomial += f"{abs(c)}"
-        else:
+        elif n - 2*i != 0:
             polynomial += f"{abs(c)}u^{n - 2*i}"
-
+        else:
+            polynomial += f"{abs(c)}"
     print(polynomial)
     
     
 
 
 if __name__ == "__main__":
-    n = 3
-    vals = hermite_polynomial(n)
-    print_polynomial(vals, n)
+    n = 5
+    for i in range(n+1):
+        print(f"n = {i}")
+        coefficients = hermite_polynomial(i)
+        print_polynomial(coefficients, i)
+        print("----------------")
