@@ -2,6 +2,10 @@ from scipy.special import hermite
 from functools import cache
 import numpy as np
 
+"""
+Computee the hermite polynomial using the recursion relation between the polynomials.
+"""
+
 def hermite_polynomial(n):
     """
     Computing the coefficients of the hermite polynomial of degree n with the
@@ -28,7 +32,6 @@ def compute_coefficients(n: int):
     
     H_n = 2u*H_{n-1} - 2(n-1)H_{n-2}'
 
-    Mult
 
     """
 
@@ -74,7 +77,8 @@ if __name__ == "__main__":
         # compute the value of the polynomial
         my_value = compute_hermite_polynomial(n, u)
         scipy_value = hermite(n)(u)
-        # check if the values are the same
+        # check if the values are the same. This line will crash the program if they
+        # are too far apart
         assert np.isclose(my_value, scipy_value, atol=1e-4)
 
     print("All tests passed!")

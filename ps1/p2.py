@@ -1,6 +1,13 @@
 import numpy as np
 from scipy.special import binom, hermite
 import math
+"""
+Compute the coefficients of the hermite polynomial using the generating function.
+In class, we saw how to do this by taking derivatives of the generating function.
+Here, I'm going to explicitly expand the generating function using the power series
+representation of the exponential function.
+"""
+
 
 def exp_coefficients(n: int, u: float):
     """
@@ -48,15 +55,19 @@ def compute_power_series_coefficient(n: int, u: float):
             power = 2 * (taylor_n-binom_n) # the z^2 term
             power += binom_n # the 2uz term
             sign = (-1)**(taylor_n-binom_n)
+
             coefficient = binom_coefficients[binom_n] * sign * 2**binom_n
             coefficient = coefficient * u**binom_n
             coefficient = coefficient / math.factorial(taylor_n)
+
             term_coefficients[power] = coefficient
         coefficients += term_coefficients
     return coefficients
 
 if __name__ == "__main__":
-    value = exp_coefficients(4, 0.7)
-    hermite_values = hermite(4)(0.7)
-    print(value)
-    print(hermite_values)
+    u = 0.7 
+    n = 2
+    value = exp_coefficients(n, u)
+    scipy_value = hermite(n)(u)
+    assert np.isclose(value, scipy_value, atol=1e-4)
+    print(f"The values match! H_{n}({u})= {scipy_value}")
