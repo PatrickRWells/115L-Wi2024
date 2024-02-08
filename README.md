@@ -47,7 +47,7 @@ My username on GitHub is [PatrickRWells](https://github.com/PatrickRWells)
 
 **4. Submit your repository URL on Canvas**
 
-GitHub does send me an email when you add me as a collaborator, but emails are hard to work with (from a code perspective).  From the repository home page on GitHub, click the ![[Screenshot 2024-01-18 at 12.44.26.png]] button and copy the link provided there. It should end with ".git"
+GitHub does send me an email when you add me as a collaborator, but emails are hard to work with (from a code perspective).  From the repository home page on GitHub, click the ![[res/button.png]] button and copy the link provided there. It should end with ".git"
 
 Find the assignment on Canvas, and submit the url to the assignment.
 
