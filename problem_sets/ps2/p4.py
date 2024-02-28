@@ -16,7 +16,7 @@ even_helper = lambda E, x_max: tise_rk4(E=E,psi0=1,phi0=0,a=0,b=x_max,h=0.01, V=
 odd_helper = lambda E, x_max: tise_rk4(E=E,psi0=0,phi0=1,a=0,b=x_max,h=0.01, V=V)[1][-1]
 
 
-
+# Find the first 6 allowed energies
 energies = find_allowed_energies(even_helper=even_helper, odd_helper=odd_helper, n = 6, E_width = 0.1, x_max = 7)
 print(f"The first 6 allowed energies for the sawtooth potential are {energies}")
 
@@ -24,6 +24,7 @@ print(f"The first 6 allowed energies for the sawtooth potential are {energies}")
 fig, axs = plt.subplots(2, 3, figsize=(15, 10))
 axs = axs.flatten()
 x_max = 7
+# make the wavefunctions
 for i, E in enumerate(energies):
     if i % 2 == 0:
         x, psi = tise_rk4(E,1,0,0,x_max,0.01, V=V)
@@ -33,6 +34,7 @@ for i, E in enumerate(energies):
         psi = np.append(np.flip(-psi),psi)
 
     x = np.append(np.flip(-x),x)
+    # plot
     axs[i].plot(x,psi, label=f"E = {E:.2f}")
     axs[i].set_title(f"n = {i}")
     if i != 0:
