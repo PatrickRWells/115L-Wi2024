@@ -1,5 +1,5 @@
 import numpy as np
-from library import tise_rk4, find_allowed_energies
+from library import tise_rk4, find_allowed_energies, find_zero, square_well_even, z_to_e
 from functools import partial
 import matplotlib.pyplot as plt
 
@@ -16,7 +16,7 @@ def V_d(x, delta):
     return 0
 
 
-def find_binding_energy(delta: float):
+def find_binding_energy(delta: float, min_energy: float):
 
     V = partial(V_d, delta=delta)
     max_x = delta + 7
@@ -24,14 +24,14 @@ def find_binding_energy(delta: float):
     even_helper = lambda E: tise_rk4(E, 1, 0, 0, max_x, 0.01, V)[1][-1]
     even_energy = find_allowed_energies(even_helper, -0.25*np.pi**2, 0, 1)
 
-    odd_helper = lambda E: tise_rk4(E, 0, 1, 0, max_x, 0.01, V)[1][-1]
-    odd_energy = find_allowed_energies(odd_helper, -0.25*np.pi**2, 0, 1)
-
-    binding_energy = even_energy[0] - odd_energy[0]
+    binding_energy = even_energy[0] - min_energy
     return binding_energy
 
+z_0 = np.pi / 2
+z = find_zero(square_well_even, 0.01, z_0, 0.01, args=(z_0,))
+E = z_to_e(z, z_0)
 delta = np.arange(0, 3, 0.1)
-binding_energies = [find_binding_energy(d) for d in delta]
+binding_energies = [find_binding_energy(d, E) for d in delta]
 plt.plot(delta, binding_energies)
 plt.title("Binding energy $E_{even} - E_{odd}$ as a function of well separation")
 plt.show()
