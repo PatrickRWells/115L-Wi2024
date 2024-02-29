@@ -123,7 +123,6 @@ def find_allowed_energies(integration_fn: Callable, E_min: float, E_max: float, 
     while len(energies) < n:
         if E_right >= E_max:
             break
-
         try: # See if there's an even solution in the energy window
             E = bisect(lambda E: integration_fn(E), E_left, E_right)
             energies.append(E)
